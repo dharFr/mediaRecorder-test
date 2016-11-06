@@ -1,0 +1,31 @@
+{
+  "name": "photo-booth",
+  "version": "0.0.0",
+  "description": "A simple photo booth web application, as an excuse to experiment with mediaRecorder API and CycleJS",
+  "main": " ",
+  "scripts": {
+    "clear": "rm -rf dist",
+    "build": "webpack",
+    "start": "webpack-dev-server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Olivier Audard <audard@gmail.com>",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "babel-core": "^6.7.7",
+    "babel-loader": "^6.2.4",
+    "babel-preset-es2015": "^6.6.0",
+    "babel-preset-es2016": "^6.16.0",
+    "webpack": "^1.13.0",
+    "webpack-dev-server": "^1.14.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dharFr/photo-booth.git"
+  },
+  "bugs": {
+    "url": "https://github.com/dharFr/photo-booth/issues"
+  },
+  "homepage": "https://github.com/dharFr/photo-booth#readme"
+}
