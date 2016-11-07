@@ -12,6 +12,7 @@ const app = {
   videoElem      : null,
   recordBtn      : null,
   uploadBtn      : null,
+  outputElem     : null,
 
   session        : null,
   screenname     : null,
@@ -21,6 +22,11 @@ const app = {
 
   uploadURL     : null,
   progressURL   : null,
+
+  handleError(err) {
+    this.outputElem.appendChild(document.createTextNode(`Error: ${err}`))
+    console.error('err', err)
+  },
 
   handleSessionUpdate(resp) {
     console.log('session update', resp)
@@ -45,6 +51,9 @@ const app = {
         // user is logged in and granted some permissions.
         // perms is a comma separated list of granted permissions
         this.updateUploadURL()
+        this.startVideo()
+          .then(this.setupMediaRecorder.bind(this))
+          .catch(this.handleError.bind(this))
       }
       else
       {
@@ -215,9 +224,13 @@ const app = {
             published : true,
           }, (videoResp) => {
             console.log('new video', videoResp)
+            const videoLink = document.createElement('a')
+            videoLink.textContent = 'watch your video'
+            videoLink.setAttribute('href', `http://www.dailymotion.com/video/${videoResp.id}`)
+            this.outputElem.appendChild(videoLink)
           })
         })
-        .catch((err) => { console.error('err', err) })
+        .catch(this.handleError.bind(this))
       })
   },
 
@@ -234,12 +247,9 @@ const app = {
     this.videoElem  = document.querySelector('#app .video video')
     this.uploadBtn  = document.querySelector('#app .video .uploadBtn')
 
+    this.outputElem = document.querySelector('#app .output')
+
     window.dmAsyncInit = this.prepareDailymotionUser.bind(this)
-    this.startVideo()
-      .then(this.setupMediaRecorder.bind(this))
-      .catch((err) => {
-        console.error(err)
-      })
   }
 }
 
