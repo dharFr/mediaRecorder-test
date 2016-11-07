@@ -7,7 +7,23 @@
   <title>Media Recorder</title>
 </head>
 <body>
-  <div id="app"></div>
+  <div id="app">
+    <div class="user">
+      <div class="login">
+      <button class="loginBtn" disabled>Login</button>
+      </div>
+      <div class="logout hidden">
+        Logged as <span class="screenname"></span>
+        <button class="logoutBtn" disabled>Logout</button>
+      </div>
+    </div>
+    <div class="video">
+      <video src="" loop width="640" height="480"></video>
+      <button class="recordBtn" disabled>Start Recording</button>
+      <button class="uploadBtn" disabled>Upload</button>
+    </div>
+  </div>
   <script src="dist/bundle.js"></script>
+  <script src="https://api.dmcdn.net/all.js" async></script>
 </body>
 </html>
