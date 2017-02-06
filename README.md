@@ -1,5 +1,7 @@
 # Media Recorder Test
 
+**_This project was a prototype to the final version available at https://github.com/dailymotion/camcorder_**
+
 Let's see if we can use the new MediaRecorder API to record a video in the browser and upload it directly to Dailymotion.
 
 ## setup
